@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-DotNetInterview.Web-3CC8EA65-6CFD-4BA4-9997-380F597A7C11</UserSecretsId>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DotNetInterview.Common\DotNetInterview.Common.csproj" />
+    <ProjectReference Include="..\DotNetInterview.Data\DotNetInterview.Data.csproj" />
+    <ProjectReference Include="..\DotNetInterview.Models\DotNetInterview.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+</Project>
