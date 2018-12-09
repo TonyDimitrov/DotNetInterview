@@ -1,0 +1,72 @@
+﻿@model DotNetInterview.Web.ViewModels.RegisterVM
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2 class="text-center mt-2">Register</h2>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-sm-6 col-md-6 col-lg-4">
+        <hr class="hr-2" />
+        <form asp-action="Register" asp-controller="Account" method="post">
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" placeholder="*" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Forname" class="control-label"></label>
+                <input asp-for="Forname" class="form-control" placeholder="*" />
+                <span asp-validation-for="Forname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" placeholder="*" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nationality" class="control-label"></label>
+                <input asp-for="Nationality" class="form-control" />
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+            <div class="form-group" data-provide="datepicker">
+                <label asp-for=Dob></label>
+                <input type="text" pattern="[0-9]{2}[-]{1}[0-9]{2}[-]{1}[0-9]{4}" id="inputTwitter"
+                       asp-for=Dob class="form-control required datepicker" placeholder="*" />
+                <span asp-validation-for=Dob class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Experience" class="control-label"></label>
+                <input asp-for="Experience" class="form-control" />
+                <span asp-validation-for="Experience" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" placeholder="*" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" placeholder="*" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="Register" class="btn btn-default" />
+            </div>
+            <div class="hide">
+                <input type="submit" value="Register" class="hidden" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

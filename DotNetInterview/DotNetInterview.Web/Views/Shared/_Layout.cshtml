@@ -1,58 +1,169 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DotNetInterview.Web</title>
-
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Dot net interview </title>
+    <link rel="stylesheet" type="text/css" href="/css/reset-css.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+<body class="py-0">
+    <div class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-lg chushka-bg-color">
+                <a asp-action="index" asp-controller="home" class="navbar-brand nav-link-white">CHUSHKA</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">DotNetInterview.Web</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                <partial name="_LoginPartial" />
-            </div>
-        </div>
-    </nav>
-
-    <partial name="_CookieConsentPartial" />
-
-    <div class="container body-content">
+                @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+                {
+                    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+                        <ul class="navbar-nav right-side">
+                            <li class="nav-item">
+                                <a asp-action="index" asp-controller="home" class="nav-link nav-link-white">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Interviews
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a asp-action="all" asp-controller="interviews" asp-route-position="junior" class="dropdown-item nav-link nav-link-white">Junior</a>
+                                    <a asp-action="all" asp-controller="interviews" asp-route-position="intermediate" class="dropdown-item nav-link nav-link-white">Mid-level</a>
+                                    <a asp-action="all" asp-controller="interviews" asp-route-position="senior" class="dropdown-item nav-link nav-link-white">Senior</a>
+                                    <a asp-action="all" asp-controller="interviews" class="dropdown-item nav-link nav-link-white">All</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Share Yours
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a asp-action="create" asp-controller="interviews" asp-route-position="junior" class="dropdown-item nav-link nav-link-white">Junior</a>
+                                    <a asp-action="create" asp-controller="interviews" asp-route-position="intermediate" class="dropdown-item nav-link nav-link-white">Mid-level</a>
+                                    <a asp-action="create" asp-controller="interviews" asp-route-position="senior" class="dropdown-item nav-link nav-link-white">Senior</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Questions
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a asp-action="all" asp-controller="questions" asp-route-position="MostDifficult" class="dropdown-item nav-link nav-link-white">Most Difficult</a>
+                                    <a asp-action="all" asp-controller="questions" asp-route-position="MostEnexpected" class="dropdown-item nav-link nav-link-white">Most Unexpected</a>
+                                    <a asp-action="all" asp-controller="questions" asp-route-position="MostInteresting" class="dropdown-item nav-link nav-link-white">Most Interesting</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav left-side">
+                            <li class="nav-item">
+                                <span class="nav-link nav-link-white">Hello Admin!</span>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-action="logout" asp-controller="account" class="nav-link nav-link-white">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else if (this.User.Identity.IsAuthenticated)
+                {
+                    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a asp-action="index" asp-controller="home" class="nav-link nav-link-white">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Interviews
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a asp-action="all" asp-controller="interviews" asp-route-position="junior" class="dropdown-item nav-link nav-link-white">Junior</a>
+                                    <a asp-action="all" asp-controller="interviews" asp-route-position="intermediate" class="dropdown-item nav-link nav-link-white">Mid-level</a>
+                                    <a asp-action="all" asp-controller="interviews" asp-route-position="senior" class="dropdown-item nav-link nav-link-white">Senior</a>
+                                    <a asp-action="all" asp-controller="interviews" class="dropdown-item nav-link nav-link-white">All</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Questions
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a asp-action="all" asp-controller="questions" asp-route-position="MostDifficult" class="dropdown-item nav-link nav-link-white">Most Difficult</a>
+                                    <a asp-action="all" asp-controller="questions" asp-route-position="MostEnexpected" class="dropdown-item nav-link nav-link-white">Most Unexpected</a>
+                                    <a asp-action="all" asp-controller="questions" asp-route-position="MostInteresting" class="dropdown-item nav-link nav-link-white">Most Interesting</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="navbar-nav left-side">
+                        <li class="nav-item">
+                            <span class="nav-link nav-link-white">Hello @User.Identity.Name!</span>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="logout" asp-controller="account" class="nav-link nav-link-white">Logout</a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a asp-action="index" asp-controller="home" class="nav-link nav-link-white">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Interviews
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a asp-action="all" asp-controller="interviews" asp-route-position="junior" class="dropdown-item nav-link nav-link-white">Junior</a>
+                                    <a asp-action="all" asp-controller="interviews" asp-route-position="intermediate" class="dropdown-item nav-link nav-link-white">Mid-level</a>
+                                    <a asp-action="all" asp-controller="interviews" asp-route-position="senior" class="dropdown-item nav-link nav-link-white">Senior</a>
+                                    <a asp-action="all" asp-controller="interviews" class="dropdown-item nav-link nav-link-white">All</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Questions
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a asp-action="all" asp-controller="questions" asp-route-position="MostDifficult" class="dropdown-item nav-link nav-link-white">Most Difficult</a>
+                                    <a asp-action="all" asp-controller="questions" asp-route-position="MostEnexpected" class="dropdown-item nav-link nav-link-white">Most Unexpected</a>
+                                    <a asp-action="all" asp-controller="questions" asp-route-position="MostInteresting" class="dropdown-item nav-link nav-link-white">Most Interesting</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav left-side">
+                            <li class="nav-item">
+                                <a asp-action="login" asp-controller="account" class="nav-link nav-link-white">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-action="register" asp-controller="account" class="nav-link nav-link-white">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
+            </nav>
+        </header>
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; 2018 - DotNetInterview.Web</p>
+            <div class="container-fluid chushka-bg-color">
+                <div class="text-white p-2 text-center">
+                    &copy; CopyRight Sanity Web Design Studios 2018. All rights reserved.
+                </div>
+            </div>
         </footer>
     </div>
-
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap-datepicker.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
@@ -69,7 +180,6 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>

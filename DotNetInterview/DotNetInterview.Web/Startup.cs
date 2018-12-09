@@ -9,6 +9,10 @@ using DotNetInterview.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DotNetInterview.Models;
+using DotNetInterview.Web.Utils;
+using System;
+using DotNetInterview.Web.Services.Interfaces;
+using DotNetInterview.Web.Services;
 
 namespace DotNetInterview.Web
 {
@@ -46,6 +50,7 @@ namespace DotNetInterview.Web
                .AddDefaultTokenProviders()
                .AddEntityFrameworkStores<DotNetInterviewDbContext>();
             // Regeister new services here
+            services.AddTransient<IAccountService, AccountService>();
 
             services.ConfigureApplicationCookie(opt =>
             {
@@ -58,7 +63,7 @@ namespace DotNetInterview.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -70,6 +75,7 @@ namespace DotNetInterview.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            Seeder.Seed(serviceProvider);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

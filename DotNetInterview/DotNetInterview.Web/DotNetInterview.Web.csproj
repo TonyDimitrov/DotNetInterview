@@ -18,8 +18,4 @@
     <ProjectReference Include="..\DotNetInterview.Models\DotNetInterview.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
 </Project>
