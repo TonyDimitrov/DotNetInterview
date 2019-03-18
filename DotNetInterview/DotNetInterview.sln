@@ -3,15 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetInterview.Web", "DotNetInterview.Web\DotNetInterview.Web.csproj", "{8C4226D3-2C1C-4578-8F15-75E9FC5BCF9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetInterview.Web", "DotNetInterview.Web\DotNetInterview.Web.csproj", "{8C4226D3-2C1C-4578-8F15-75E9FC5BCF9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetInterview.Data", "DotNetInterview.Data\DotNetInterview.Data.csproj", "{0DCDD60D-5363-4230-938E-F9D164E5FA86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetInterview.Data", "DotNetInterview.Data\DotNetInterview.Data.csproj", "{0DCDD60D-5363-4230-938E-F9D164E5FA86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetInterview.Models", "DotNetInterview.Models\DotNetInterview.Models.csproj", "{91073FF0-292C-4EE8-A2BC-7D9435E1F558}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetInterview.Models", "DotNetInterview.Models\DotNetInterview.Models.csproj", "{91073FF0-292C-4EE8-A2BC-7D9435E1F558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetInterview.Common", "DotNetInterview.Common\DotNetInterview.Common.csproj", "{D259CB30-FB53-40C1-BC48-4A10484689E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetInterview.Common", "DotNetInterview.Common\DotNetInterview.Common.csproj", "{D259CB30-FB53-40C1-BC48-4A10484689E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetInterview.Tests", "DotNetInterview.Tests\DotNetInterview.Tests.csproj", "{FFBD0CEA-9E1E-4790-BFDB-2C36703826AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetInterview.Tests", "DotNetInterview.Tests\DotNetInterview.Tests.csproj", "{FFBD0CEA-9E1E-4790-BFDB-2C36703826AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{940F9A25-DD29-4127-A456-5B82CB276670}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

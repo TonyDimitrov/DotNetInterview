@@ -18,8 +18,8 @@ namespace DotNetInterview.Common
         public const int CmpNationalityMaxLength = 30;
         public const int CmpNationalityMinLength = 2;
 
-        public const int InterviewLocationMinLength = 100;
-        public const int InterviewLocationMiaxLength = 2;
+        public const int InterviewLocationMaxLength = 100;
+        public const int InterviewLocationMinLength = 2;
 
         public const int CmpEmployeesMaxLength = 20000;
         public const int CmpEmployeesMinLength = 2;

@@ -51,6 +51,7 @@ namespace DotNetInterview.Web
                .AddEntityFrameworkStores<DotNetInterviewDbContext>();
             // Regeister new services here
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IInterviewService, InterviewService>();
 
             services.ConfigureApplicationCookie(opt =>
             {

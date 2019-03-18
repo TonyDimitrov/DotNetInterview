@@ -14,7 +14,7 @@ namespace DotNetInterview.Models
         [MinLength(CmpNationalityMinLength)]
         public string CompanyNationality { get; set; }
 
-        [MaxLength(InterviewLocationMiaxLength)]
+        [MaxLength(InterviewLocationMaxLength)]
         [MinLength(InterviewLocationMinLength)]
         public string InterviewLocation { get; set; }
 

@@ -18,4 +18,9 @@
     <ProjectReference Include="..\DotNetInterview.Models\DotNetInterview.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\avatars\" />
+    <Folder Include="wwwroot\tasks\" />
+  </ItemGroup>
+
 </Project>

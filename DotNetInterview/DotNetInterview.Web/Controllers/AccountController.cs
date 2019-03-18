@@ -11,16 +11,15 @@ using System.Threading.Tasks;
 
 namespace DotNetInterview.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private SignInManager<DNIUser> signIn;
-        private DotNetInterviewDbContext dbContext;
         private IAccountService accountService;
 
-        public AccountController(SignInManager<DNIUser> signIn, DotNetInterviewDbContext dbContext, IAccountService accountService)
+        public AccountController(DotNetInterviewDbContext dbContext, SignInManager<DNIUser> signIn, IAccountService accountService)
+            :base(dbContext)
         {
             this.signIn = signIn;
-            this.dbContext = dbContext;
             this.accountService = accountService;
         }
 
